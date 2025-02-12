@@ -43,6 +43,51 @@ const treino = {
     ]
 };
 
+// Adicionar o treino da Aimê
+const treinoAime = {
+    "Treino A - Pernas, Glúteos e Superiores": [
+        "Circuito 1:",
+        "1. Agachamento na polia com barra curta – 4 placas, 12 repetições",
+        "2. Cadeira extensora – 3 placas, 12 repetições",
+        "3. Levantamento lateral de ombros com halteres – 2kg, 12 repetições",
+        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "Circuito 2:",
+        "1. Subida unilateral no banco – 12 repetições por perna",
+        "2. Elevação pélvico com elevação de perna unilateral – 15 repetições por lado",
+        "3. Agachamento sumô com halteres 6kg– 12 repetições",
+        "4. Tríceps com corda na polia – 12 repetições",
+        "5. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "Circuito 3:",
+        "1. Abdutora com bola – 15 repetições, 3s isometria",
+        "2. Glúteo na cama (extensão de quadril) – 12 repetições por perna",
+        "3. Supino livre com halteres – 4kg, 12 repetições",
+        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "Circuito 4:",
+        "1. Abdominal elevação perna frente – 15 repetições, 3s isometria",
+        "2. Abdominal encolhimento perna - 15 rep"
+    ],
+    "Treino B - Posteriores, Glúteos e Superiores": [
+        "Circuito 1:",
+        "1. Agachamento terra 4kg– 12 repetições",
+        "2. Prancha Levantamento perna atras - 12 rep cada perna",
+        "3. Puxada triângulo por cima – 5 placas, 12 repetições",
+        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "Circuito 2:",
+        "1. Agachamento unilateral frontal – 12 repetições por perna",
+        "2. Abdominal encolhimento de perna na cama – 15 repetições",
+        "3. Remada triângulo – 4 placas, 12 repetições",
+        "4. Elevação pélvica unilateral com perna elevada – 12 rep por lado",
+        "5. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "Circuito 3:",
+        "1. Bíceps scott 3kg, 12 repetições",
+        "2. Tornozelo unilateral com peso – 15 repetições por lado",
+        "3. Puxada aberta costas – 4Kg, 12 repetições",
+        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)"
+    ]
+};
+
+let currentUser = 'pedro';
+
 // Reorganiza o treino para começar na segunda-feira
 const treinoOrdenado = {
     "Domingo - Descanso ou Atividade Leve": treino["Dia 7 - Descanso ou Atividade Leve"],
@@ -151,8 +196,20 @@ function updateWorkout(dayIndex) {
     const workoutContainer = document.getElementById('workoutContainer');
     workoutContainer.innerHTML = '';
 
-    const dayKey = Object.keys(treinoOrdenado)[dayIndex];
-    const exercises = treinoOrdenado[dayKey];
+    let currentTreino;
+    let dayKey;
+    let exercises;
+
+    if (currentUser === 'pedro') {
+        dayKey = Object.keys(treinoOrdenado)[dayIndex];
+        exercises = treinoOrdenado[dayKey];
+    } else {
+        // Para Aimê, alterna entre Treino A e B dependendo do dia
+        dayKey = dayIndex % 2 === 0 ? 
+            "Treino A - Pernas, Glúteos e Superiores" : 
+            "Treino B - Posteriores, Glúteos e Superiores";
+        exercises = treinoAime[dayKey];
+    }
 
     const titleDiv = document.createElement('div');
     titleDiv.className = 'workout-title';
@@ -162,6 +219,9 @@ function updateWorkout(dayIndex) {
     exercises.forEach(exercise => {
         const exerciseDiv = document.createElement('div');
         exerciseDiv.className = 'workout-item';
+        if (exercise.startsWith('Circuito')) {
+            exerciseDiv.className += ' circuit-title';
+        }
         exerciseDiv.innerHTML = `
             <span>${exercise}</span>
             <input type="checkbox" />
@@ -173,10 +233,12 @@ function updateWorkout(dayIndex) {
     document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
 }
 
-// Adiciona funcionalidade aos botões de navegação
+// Atualizar a função de setup dos botões de navegação
 document.querySelectorAll('.nav-item').forEach(item => {
     item.addEventListener('click', () => {
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
         item.classList.add('active');
+        currentUser = item.dataset.user;
+        updateWorkout(new Date().getDay());
     });
 }); 
