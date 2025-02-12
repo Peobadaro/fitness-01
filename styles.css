@@ -78,9 +78,8 @@ body {
 }
 
 .activity-rings {
-    margin: 2rem 0;
-    display: flex;
-    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .ring-container {
@@ -193,4 +192,44 @@ canvas {
 
 .circuit-title:first-child {
     margin-top: 0;
+}
+
+.ring {
+    fill: none;
+    stroke-width: 8;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    transition: stroke-dashoffset 0.8s ease-in-out;
+}
+
+.ring-background {
+    fill: none;
+    stroke-width: 8;
+    opacity: 0.2;
+}
+
+.move-ring, .move-ring-bg {
+    stroke: var(--ring-move);
+}
+
+.exercise-ring, .exercise-ring-bg {
+    stroke: var(--ring-exercise);
+}
+
+.stand-ring, .stand-ring-bg {
+    stroke: var(--ring-stand);
+}
+
+/* Adicione animação suave */
+@keyframes ringProgress {
+    from {
+        stroke-dashoffset: 251.2;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.ring {
+    animation: ringProgress 1.5s ease-out forwards;
 } 

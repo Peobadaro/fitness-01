@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDate();
     setupProgressChart();
     setupTreinoButtons();
+    setupActivityRings();
 });
 
 function setupWeekDays() {
@@ -307,4 +308,29 @@ document.querySelectorAll('.nav-item').forEach(item => {
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
         item.classList.add('active');
     });
-}); 
+});
+
+function setupActivityRings() {
+    const ringContainer = document.querySelector('.ring-container');
+    ringContainer.innerHTML = `
+        <svg viewBox="0 0 100 100" class="activity-rings">
+            <!-- Anel de Movimento -->
+            <circle cx="50" cy="50" r="40" class="ring-background move-ring-bg"/>
+            <circle cx="50" cy="50" r="40" class="ring move-ring" 
+                    stroke-dasharray="${2 * Math.PI * 40}" 
+                    stroke-dashoffset="${2 * Math.PI * 40 * (1 - 0.8)}"/>
+            
+            <!-- Anel de Exercício -->
+            <circle cx="50" cy="50" r="32" class="ring-background exercise-ring-bg"/>
+            <circle cx="50" cy="50" r="32" class="ring exercise-ring"
+                    stroke-dasharray="${2 * Math.PI * 32}"
+                    stroke-dashoffset="${2 * Math.PI * 32 * (1 - 0.65)}"/>
+            
+            <!-- Anel de Em Pé -->
+            <circle cx="50" cy="50" r="24" class="ring-background stand-ring-bg"/>
+            <circle cx="50" cy="50" r="24" class="ring stand-ring"
+                    stroke-dasharray="${2 * Math.PI * 24}"
+                    stroke-dashoffset="${2 * Math.PI * 24 * (1 - 0.45)}"/>
+        </svg>
+    `;
+} 
