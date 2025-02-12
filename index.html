@@ -24,6 +24,10 @@
         <main class="summary">
             <h1>Resumo</h1>
             
+            <div class="progress-chart">
+                <canvas id="progressChart"></canvas>
+            </div>
+
             <div class="activity-rings">
                 <div class="ring-container">
                     <!-- Rings serão inseridos via JavaScript -->
@@ -52,20 +56,17 @@
         </main>
 
         <nav class="bottom-nav">
-            <button class="nav-item active">
-                <span class="icon">📊</span>
-                <span>Resumo</span>
+            <button class="nav-item active" id="btnPedro">
+                <span class="icon">👨</span>
+                <span>Pedro</span>
             </button>
-            <button class="nav-item">
-                <span class="icon">💪</span>
-                <span>Treino</span>
-            </button>
-            <button class="nav-item">
-                <span class="icon">👥</span>
-                <span>Social</span>
+            <button class="nav-item" id="btnAime">
+                <span class="icon">👩</span>
+                <span>Aimê</span>
             </button>
         </nav>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 

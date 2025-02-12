@@ -183,4 +183,14 @@ body {
 canvas {
     width: 100% !important;
     height: 100% !important;
+}
+
+.circuit-title {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.circuit-title:first-child {
+    margin-top: 0;
 } 

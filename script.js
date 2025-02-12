@@ -1,3 +1,48 @@
+const treino = {
+    "Dia 1 - Peito, Tríceps e Cardio HIIT": [
+        "Supino reto: 4 séries de 8-10 repetições",
+        "Supino inclinado com halteres: 4 séries de 8-10 repetições",
+        "Crucifixo: 3 séries de 10-12 repetições",
+        "Tríceps pulley: 3 séries de 10-12 repetições",
+        "Mergulho entre bancos: 3 séries até a falha",
+        "HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)"
+    ],
+    "Dia 2 - Costas, Bíceps e Core": [
+        "Puxada frontal: 4 séries de 8-10 repetições",
+        "Remada curvada: 4 séries de 8-10 repetições",
+        "Pullover: 3 séries de 10-12 repetições",
+        "Rosca direta: 3 séries de 10-12 repetições",
+        "Rosca alternada: 3 séries de 10-12 repetições",
+        "Core (Prancha 3x45s, Abdominal Infra 3x15)"
+    ],
+    "Dia 3 - Pernas, Ombros e Cardio": [
+        "Agachamento livre: 4 séries de 10-12 repetições",
+        "Leg press: 4 séries de 10-12 repetições",
+        "Cadeira extensora: 3 séries de 12-15 repetições",
+        "Desenvolvimento militar: 4 séries de 8-10 repetições",
+        "Elevação lateral: 3 séries de 10-12 repetições",
+        "Cardio LISS: 20 min caminhada inclinada"
+    ],
+    "Dia 4 - Descanso Ativo": [
+        "Caminhada de 30-40 min ou Yoga/Alongamento"
+    ],
+    "Dia 5 - Treino Funcional e Core": [
+        "Circuito de 6-8 exercícios (burpees, agachamento, saltos, corda, flexões, prancha)",
+        "Cada exercício por 40s com 20s descanso",
+        "3 a 4 rodadas com 2 min de descanso entre elas"
+    ],
+    "Dia 6 - Pernas e Cardio HIIT": [
+        "Agachamento sumô: 4 séries de 8-10 repetições",
+        "Avanço com halteres: 3 séries de 10 repetições por perna",
+        "Stiff com halteres: 3 séries de 10 repetições",
+        "Gêmeos em pé: 3 séries de 12-15 repetições",
+        "HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)"
+    ],
+    "Dia 7 - Descanso ou Atividade Leve": [
+        "Caminhada ou alongamento"
+    ]
+};
+
 const treinoPedro = {
     "Treino A": [
         "Circuito 1:",
@@ -66,51 +111,23 @@ const treinoAime = {
     ]
 };
 
-let currentUser = 'pedro';
-
-// Atualiza a função de setup dos botões de navegação
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        currentUser = item.dataset.user;
-        updateWorkout(new Date().getDay());
-    });
-});
-
-// Atualiza a função updateWorkout para usar o treino correto
-function updateWorkout(dayIndex) {
-    const workoutContainer = document.getElementById('workoutContainer');
-    workoutContainer.innerHTML = '';
-
-    const treino = currentUser === 'pedro' ? treinoPedro : treinoAime;
-    const treinoKey = Object.keys(treino)[dayIndex % Object.keys(treino).length];
-    const exercises = treino[treinoKey];
-
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'workout-title';
-    titleDiv.textContent = treinoKey;
-    workoutContainer.appendChild(titleDiv);
-
-    exercises.forEach(exercise => {
-        const exerciseDiv = document.createElement('div');
-        exerciseDiv.className = 'workout-item';
-        exerciseDiv.innerHTML = `
-            <span>${exercise}</span>
-            ${!exercise.startsWith('Circuito') ? '<input type="checkbox" />' : ''}
-        `;
-        workoutContainer.appendChild(exerciseDiv);
-    });
-
-    const totalSeries = exercises.filter(ex => !ex.startsWith('Circuito')).length;
-    document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
-}
+// Reorganiza o treino para começar na segunda-feira
+const treinoOrdenado = {
+    "Domingo - Descanso ou Atividade Leve": treino["Dia 7 - Descanso ou Atividade Leve"],
+    "Segunda - Peito, Tríceps e Cardio HIIT": treino["Dia 1 - Peito, Tríceps e Cardio HIIT"],
+    "Terça - Costas, Bíceps e Core": treino["Dia 2 - Costas, Bíceps e Core"],
+    "Quarta - Pernas, Ombros e Cardio": treino["Dia 3 - Pernas, Ombros e Cardio"],
+    "Quinta - Descanso Ativo": treino["Dia 4 - Descanso Ativo"],
+    "Sexta - Treino Funcional e Core": treino["Dia 5 - Treino Funcional e Core"],
+    "Sábado - Pernas e Cardio HIIT": treino["Dia 6 - Pernas e Cardio HIIT"]
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     setupWeekDays();
     setupWorkout();
     updateDate();
     setupProgressChart();
+    setupTreinoButtons();
 });
 
 function setupWeekDays() {
@@ -197,4 +214,97 @@ function setupProgressChart() {
     };
 
     new Chart(ctx, config);
-} 
+}
+
+function updateWorkout(dayIndex) {
+    const workoutContainer = document.getElementById('workoutContainer');
+    workoutContainer.innerHTML = '';
+
+    const dayKey = Object.keys(treinoOrdenado)[dayIndex];
+    const exercises = treinoOrdenado[dayKey];
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'workout-title';
+    titleDiv.textContent = dayKey;
+    workoutContainer.appendChild(titleDiv);
+
+    exercises.forEach(exercise => {
+        const exerciseDiv = document.createElement('div');
+        exerciseDiv.className = 'workout-item';
+        exerciseDiv.innerHTML = `
+            <span>${exercise}</span>
+            <input type="checkbox" />
+        `;
+        workoutContainer.appendChild(exerciseDiv);
+    });
+
+    const totalSeries = exercises.length;
+    document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
+}
+
+function setupTreinoButtons() {
+    const btnPedro = document.getElementById('btnPedro');
+    const btnAime = document.getElementById('btnAime');
+
+    btnPedro.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        btnPedro.classList.add('active');
+        showTreino('pedro');
+    });
+
+    btnAime.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        btnAime.classList.add('active');
+        showTreino('aime');
+    });
+}
+
+function showTreino(pessoa) {
+    const workoutContainer = document.getElementById('workoutContainer');
+    workoutContainer.innerHTML = '';
+
+    let treino;
+    let titulo;
+
+    if (pessoa === 'pedro') {
+        treino = treinoPedro["Treino A"];
+        titulo = "Treino Pedro - Treino A";
+    } else {
+        // Alterna entre Treino A e B para Aimê baseado no dia da semana
+        const isTrainingA = new Date().getDay() % 2 === 0;
+        const treinoKey = isTrainingA ? 
+            "Treino A – Pernas, Glúteos e Membros Superiores" : 
+            "Treino B – Posteriores, Glúteos e Membros Superiores";
+        treino = treinoAime[treinoKey];
+        titulo = `Treino Aimê - ${isTrainingA ? 'A' : 'B'}`;
+    }
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'workout-title';
+    titleDiv.textContent = titulo;
+    workoutContainer.appendChild(titleDiv);
+
+    treino.forEach(exercise => {
+        const exerciseDiv = document.createElement('div');
+        exerciseDiv.className = 'workout-item';
+        if (exercise.startsWith('Circuito')) {
+            exerciseDiv.className += ' circuit-title';
+        }
+        exerciseDiv.innerHTML = `
+            <span>${exercise}</span>
+            ${!exercise.startsWith('Circuito') ? '<input type="checkbox" />' : ''}
+        `;
+        workoutContainer.appendChild(exerciseDiv);
+    });
+
+    const totalSeries = treino.filter(ex => !ex.startsWith('Circuito')).length;
+    document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
+}
+
+// Adiciona funcionalidade aos botões de navegação
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+    });
+}); 
