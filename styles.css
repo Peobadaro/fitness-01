@@ -170,4 +170,17 @@ body {
     margin-bottom: 1rem;
     padding: 0.5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress-chart {
+    background-color: var(--secondary-background);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+    height: 200px;
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
 } 

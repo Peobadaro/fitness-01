@@ -43,10 +43,22 @@ const treino = {
     ]
 };
 
+// Reorganiza o treino para começar na segunda-feira
+const treinoOrdenado = {
+    "Domingo - Descanso ou Atividade Leve": treino["Dia 7 - Descanso ou Atividade Leve"],
+    "Segunda - Peito, Tríceps e Cardio HIIT": treino["Dia 1 - Peito, Tríceps e Cardio HIIT"],
+    "Terça - Costas, Bíceps e Core": treino["Dia 2 - Costas, Bíceps e Core"],
+    "Quarta - Pernas, Ombros e Cardio": treino["Dia 3 - Pernas, Ombros e Cardio"],
+    "Quinta - Descanso Ativo": treino["Dia 4 - Descanso Ativo"],
+    "Sexta - Treino Funcional e Core": treino["Dia 5 - Treino Funcional e Core"],
+    "Sábado - Pernas e Cardio HIIT": treino["Dia 6 - Pernas e Cardio HIIT"]
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     setupWeekDays();
     setupWorkout();
     updateDate();
+    setupProgressChart();
 });
 
 function setupWeekDays() {
@@ -84,14 +96,64 @@ function setupWorkout() {
     updateWorkout(today);
 }
 
+function setupProgressChart() {
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    
+    // Dados simulados de progresso (você pode substituir por dados reais)
+    const data = {
+        labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        datasets: [{
+            label: 'Exercícios Completados',
+            data: [6, 4, 5, 2, 4, 3, 1],
+            borderColor: '#2ecc71',
+            tension: 0.4,
+            fill: false
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.1)'
+                    },
+                    ticks: {
+                        color: '#ffffff'
+                    }
+                }
+            }
+        }
+    };
+
+    new Chart(ctx, config);
+}
+
 function updateWorkout(dayIndex) {
     const workoutContainer = document.getElementById('workoutContainer');
     workoutContainer.innerHTML = '';
 
-    const dayKey = Object.keys(treino)[dayIndex];
-    const exercises = treino[dayKey];
+    const dayKey = Object.keys(treinoOrdenado)[dayIndex];
+    const exercises = treinoOrdenado[dayKey];
 
-    // Adiciona o título do treino
     const titleDiv = document.createElement('div');
     titleDiv.className = 'workout-title';
     titleDiv.textContent = dayKey;
@@ -107,7 +169,6 @@ function updateWorkout(dayIndex) {
         workoutContainer.appendChild(exerciseDiv);
     });
 
-    // Atualiza o contador de séries
     const totalSeries = exercises.length;
     document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
 }
