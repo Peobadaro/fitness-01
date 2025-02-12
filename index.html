@@ -10,56 +10,94 @@
     <div class="app-container">
         <header>
             <div class="date-header">
+                <button class="nav-arrow" id="prevDay">←</button>
                 <h2 id="current-date"></h2>
+                <button class="nav-arrow" id="nextDay">→</button>
             </div>
-            <h1>Summary</h1>
+            <div class="week-nav">
+                <button class="day-btn" data-day="0">D</button>
+                <button class="day-btn" data-day="1">S</button>
+                <button class="day-btn" data-day="2">T</button>
+                <button class="day-btn" data-day="3">Q</button>
+                <button class="day-btn" data-day="4">Q</button>
+                <button class="day-btn" data-day="5">S</button>
+                <button class="day-btn" data-day="6">S</button>
+            </div>
+            <h1 id="view-title">Summary</h1>
         </header>
 
-        <section class="activity-rings">
-            <div class="rings-container">
-                <div class="ring move"></div>
-                <div class="ring exercise"></div>
-                <div class="ring stand"></div>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="label">Move</span>
-                    <span class="value" style="color: #FF375F">605/600</span>
-                    <span class="unit">CAL</span>
+        <!-- View: Summary -->
+        <section id="summary-view" class="view active">
+            <section class="activity-rings">
+                <div class="rings-container">
+                    <div class="ring move"></div>
+                    <div class="ring exercise"></div>
+                    <div class="ring stand"></div>
                 </div>
-                <div class="stat-item">
-                    <span class="label">Exercise</span>
-                    <span class="value" style="color: #96FF5C">42/30</span>
-                    <span class="unit">MIN</span>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="label">Move</span>
+                        <span class="value" style="color: #FF375F">605/600</span>
+                        <span class="unit">CAL</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Exercise</span>
+                        <span class="value" style="color: #96FF5C">42/30</span>
+                        <span class="unit">MIN</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="label">Stand</span>
+                        <span class="value" style="color: #32D8FF">10/6</span>
+                        <span class="unit">HRS</span>
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <span class="label">Stand</span>
-                    <span class="value" style="color: #32D8FF">10/6</span>
-                    <span class="unit">HRS</span>
-                </div>
+            </section>
+            <div class="progress-chart">
+                <h3>Weekly Progress</h3>
+                <canvas id="weeklyChart"></canvas>
             </div>
         </section>
 
-        <section class="workout-plan">
-            <h2>Workout Plan</h2>
+        <!-- View: Workout -->
+        <section id="workout-view" class="view">
             <div id="workout-container"></div>
         </section>
 
+        <!-- View: Share -->
+        <section id="share-view" class="view">
+            <div class="share-options">
+                <h3>Share Your Progress</h3>
+                <button class="share-btn">
+                    <span class="icon">📱</span>
+                    Share via Message
+                </button>
+                <button class="share-btn">
+                    <span class="icon">📧</span>
+                    Share via Email
+                </button>
+                <button class="share-btn">
+                    <span class="icon">📲</span>
+                    Share to Social Media
+                </button>
+            </div>
+        </section>
+
         <nav class="bottom-nav">
-            <button class="nav-item active">
+            <button class="nav-item active" data-view="summary-view">
                 <span class="icon">📊</span>
                 <span>Summary</span>
             </button>
-            <button class="nav-item">
+            <button class="nav-item" data-view="workout-view">
                 <span class="icon">💪</span>
                 <span>Workout</span>
             </button>
-            <button class="nav-item">
+            <button class="nav-item" data-view="share-view">
                 <span class="icon">👥</span>
                 <span>Share</span>
             </button>
         </nav>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
