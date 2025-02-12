@@ -3,73 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Treino Tracker</title>
+    <title>Fitness Tracker</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="app-container">
-        <header>
-            <div class="week-nav">
-                <button class="nav-btn">&lt;</button>
-                <div class="days-container">
-                    <div class="day-circle" data-day="D">D</div>
-                    <div class="day-circle" data-day="S">S</div>
-                    <div class="day-circle" data-day="T">T</div>
-                    <div class="day-circle" data-day="Q">Q</div>
-                    <div class="day-circle" data-day="Q">Q</div>
-                    <div class="day-circle" data-day="S">S</div>
-                    <div class="day-circle" data-day="S">S</div>
+    <div class="container">
+        <header class="header">
+            <div class="date-nav">
+                <button class="back-btn">←</button>
+                <h2 id="currentDate">Hoje, 12 de fev. de 2024</h2>
+                <button class="calendar-btn">📅</button>
+            </div>
+            <div class="week-progress">
+                <div class="day-circles">
+                    <!-- Dias serão inseridos via JavaScript -->
                 </div>
-                <button class="nav-btn">&gt;</button>
             </div>
         </header>
 
-        <main>
-            <section class="summary-section">
-                <h1>Resumo</h1>
-                <div class="activity-rings">
-                    <div class="ring-container">
-                        <svg class="progress-ring" width="200" height="200">
-                            <!-- Rings will be added by JS -->
-                        </svg>
-                    </div>
+        <main class="summary">
+            <h1>Resumo</h1>
+            
+            <div class="activity-rings">
+                <div class="ring-container">
+                    <!-- Rings serão inseridos via JavaScript -->
                 </div>
-                
-                <div class="metrics">
-                    <div class="metric">
-                        <span class="label">Exercícios</span>
-                        <span class="value">0/6</span>
-                    </div>
-                    <div class="metric">
-                        <span class="label">Tempo</span>
-                        <span class="value">0 min</span>
-                    </div>
-                    <div class="metric">
-                        <span class="label">Séries</span>
-                        <span class="value">0/24</span>
-                    </div>
-                </div>
-            </section>
+            </div>
 
-            <section class="workout-section">
-                <h2>Treino de Hoje</h2>
-                <div id="workout-container">
-                    <!-- Workout items will be added by JS -->
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Exercícios</span>
+                    <span class="stat-value" id="exerciseTime">0/60</span>
+                    <span class="stat-unit">MIN</span>
                 </div>
-            </section>
+                <div class="stat-item">
+                    <span class="stat-label">Séries</span>
+                    <span class="stat-value" id="seriesCount">0/24</span>
+                    <span class="stat-unit">TOTAL</span>
+                </div>
+            </div>
+
+            <div class="workout-plan">
+                <h2>Treino do Dia</h2>
+                <div id="workoutContainer">
+                    <!-- Treino será inserido via JavaScript -->
+                </div>
+            </div>
         </main>
 
         <nav class="bottom-nav">
             <button class="nav-item active">
-                <i class="icon">📊</i>
+                <span class="icon">📊</span>
                 <span>Resumo</span>
             </button>
             <button class="nav-item">
-                <i class="icon">💪</i>
+                <span class="icon">💪</span>
                 <span>Treino</span>
             </button>
             <button class="nav-item">
-                <i class="icon">👥</i>
+                <span class="icon">👥</span>
                 <span>Social</span>
             </button>
         </nav>

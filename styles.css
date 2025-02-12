@@ -1,11 +1,11 @@
 :root {
     --primary-color: #2ecc71;
-    --background-dark: #000000;
-    --text-light: #ffffff;
-    --text-gray: #888888;
-    --ring-red: #FF3B30;
-    --ring-green: #34C759;
-    --ring-blue: #5AC8FA;
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --secondary-background: #1c1c1e;
+    --ring-move: #ff6b6b;
+    --ring-exercise: #2ecc71;
+    --ring-stand: #5ac8fa;
 }
 
 * {
@@ -16,65 +16,65 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--background-dark);
-    color: var(--text-light);
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
-.app-container {
-    max-width: 600px;
-    margin: 0 auto;
+.container {
+    max-width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-/* Header and Week Navigation */
-.week-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header {
     padding: 1rem;
-    background-color: #1a1a1a;
 }
 
-.days-container {
+.date-nav {
     display: flex;
-    gap: 0.5rem;
-}
-
-.day-circle {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    border: 2px solid var(--text-gray);
-    cursor: pointer;
+    margin-bottom: 1rem;
 }
 
-.day-circle.active {
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
-}
-
-.nav-btn {
+.back-btn, .calendar-btn {
     background: none;
     border: none;
     color: var(--primary-color);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     cursor: pointer;
 }
 
-/* Main Content */
-main {
-    flex: 1;
-    padding: 1rem;
+.week-progress {
+    margin-top: 1rem;
 }
 
-.summary-section {
-    margin-bottom: 2rem;
+.day-circles {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.day-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    position: relative;
+}
+
+.day-circle.active {
+    background-color: var(--primary-color);
+}
+
+.summary {
+    flex: 1;
+    padding: 1rem;
 }
 
 .activity-rings {
@@ -84,57 +84,60 @@ main {
 }
 
 .ring-container {
-    position: relative;
     width: 200px;
     height: 200px;
+    position: relative;
 }
 
-.metrics {
+.stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
-.metric {
+.stat-item {
+    background-color: var(--secondary-background);
+    padding: 1rem;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
-.metric .label {
-    color: var(--text-gray);
+.stat-label {
     font-size: 0.9rem;
+    opacity: 0.8;
 }
 
-.metric .value {
-    font-size: 1.2rem;
+.stat-value {
+    font-size: 1.5rem;
     font-weight: bold;
+    color: var(--primary-color);
 }
 
-/* Workout Section */
-.workout-section {
-    background-color: #1a1a1a;
-    border-radius: 15px;
+.workout-plan {
+    background-color: var(--secondary-background);
+    border-radius: 12px;
     padding: 1rem;
 }
 
-.exercise-item {
+.workout-item {
     padding: 1rem;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.exercise-item:last-child {
+.workout-item:last-child {
     border-bottom: none;
 }
 
-/* Bottom Navigation */
 .bottom-nav {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    justify-content: space-around;
     padding: 1rem;
-    background-color: #1a1a1a;
+    background-color: var(--secondary-background);
     position: sticky;
     bottom: 0;
 }
@@ -143,152 +146,19 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
     background: none;
     border: none;
-    color: var(--text-gray);
+    color: var(--text-color);
+    opacity: 0.7;
     cursor: pointer;
 }
 
 .nav-item.active {
+    opacity: 1;
     color: var(--primary-color);
 }
 
-.nav-item .icon {
+.icon {
     font-size: 1.5rem;
-}
-
-.nav-item span {
-    font-size: 0.8rem;
-}
-
-/* Animations */
-@keyframes ringProgress {
-    from { stroke-dashoffset: 502.4; }
-    to { stroke-dashoffset: var(--target-offset); }
-}
-
-.progress-ring circle {
-    transition: stroke-dashoffset 0.8s ease-in-out;
-}
-
-/* Timer Controls */
-.timer-controls {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.timer-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.exercise-timer {
-    font-family: monospace;
-    font-size: 1.1rem;
-}
-
-/* Completion Modal */
-.completion-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: #1a1a1a;
-    padding: 2rem;
-    border-radius: 15px;
-    text-align: center;
-}
-
-.modal-content h2 {
-    margin-bottom: 1rem;
-}
-
-.modal-content button {
-    margin-top: 1rem;
-    padding: 0.5rem 2rem;
-    background: var(--primary-color);
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-}
-
-/* Stats Container */
-.stats-container {
-    background: #1a1a1a;
-    border-radius: 15px;
-    padding: 1rem;
-    margin-top: 2rem;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.stat-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
-
-.stat-label {
-    color: var(--text-gray);
-    font-size: 0.8rem;
-}
-
-.stat-value {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-/* Completed Day Indicator */
-.day-circle.completed {
-    background-color: var(--ring-green);
-    border-color: var(--ring-green);
-}
-
-/* Complete Button */
-.complete-btn {
-    width: 100%;
-    padding: 1rem;
-    background: var(--primary-color);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 1.1rem;
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.complete-btn:hover {
-    background-color: #27ae60;
-}
-
-/* Exercise Checkbox Styling */
-.exercise-check {
-    margin-right: 1rem;
-    width: 20px;
-    height: 20px;
-    accent-color: var(--primary-color);
+    margin-bottom: 0.3rem;
 } 
