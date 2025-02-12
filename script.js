@@ -1,5 +1,46 @@
 const treino = {
-    // Seu objeto de treino aqui (como fornecido)
+    "Dia 1 - Peito, Tríceps e Cardio HIIT": [
+        "Supino reto: 4 séries de 8-10 repetições",
+        "Supino inclinado com halteres: 4 séries de 8-10 repetições",
+        "Crucifixo: 3 séries de 10-12 repetições",
+        "Tríceps pulley: 3 séries de 10-12 repetições",
+        "Mergulho entre bancos: 3 séries até a falha",
+        "HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)"
+    ],
+    "Dia 2 - Costas, Bíceps e Core": [
+        "Puxada frontal: 4 séries de 8-10 repetições",
+        "Remada curvada: 4 séries de 8-10 repetições",
+        "Pullover: 3 séries de 10-12 repetições",
+        "Rosca direta: 3 séries de 10-12 repetições",
+        "Rosca alternada: 3 séries de 10-12 repetições",
+        "Core (Prancha 3x45s, Abdominal Infra 3x15)"
+    ],
+    "Dia 3 - Pernas, Ombros e Cardio": [
+        "Agachamento livre: 4 séries de 10-12 repetições",
+        "Leg press: 4 séries de 10-12 repetições",
+        "Cadeira extensora: 3 séries de 12-15 repetições",
+        "Desenvolvimento militar: 4 séries de 8-10 repetições",
+        "Elevação lateral: 3 séries de 10-12 repetições",
+        "Cardio LISS: 20 min caminhada inclinada"
+    ],
+    "Dia 4 - Descanso Ativo": [
+        "Caminhada de 30-40 min ou Yoga/Alongamento"
+    ],
+    "Dia 5 - Treino Funcional e Core": [
+        "Circuito de 6-8 exercícios (burpees, agachamento, saltos, corda, flexões, prancha)",
+        "Cada exercício por 40s com 20s descanso",
+        "3 a 4 rodadas com 2 min de descanso entre elas"
+    ],
+    "Dia 6 - Pernas e Cardio HIIT": [
+        "Agachamento sumô: 4 séries de 8-10 repetições",
+        "Avanço com halteres: 3 séries de 10 repetições por perna",
+        "Stiff com halteres: 3 séries de 10 repetições",
+        "Gêmeos em pé: 3 séries de 12-15 repetições",
+        "HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)"
+    ],
+    "Dia 7 - Descanso ou Atividade Leve": [
+        "Caminhada ou alongamento"
+    ]
 };
 
 document.addEventListener('DOMContentLoaded', () => {
