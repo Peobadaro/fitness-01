@@ -91,6 +91,12 @@ function updateWorkout(dayIndex) {
     const dayKey = Object.keys(treino)[dayIndex];
     const exercises = treino[dayKey];
 
+    // Adiciona o título do treino
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'workout-title';
+    titleDiv.textContent = dayKey;
+    workoutContainer.appendChild(titleDiv);
+
     exercises.forEach(exercise => {
         const exerciseDiv = document.createElement('div');
         exerciseDiv.className = 'workout-item';

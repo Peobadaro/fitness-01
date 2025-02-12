@@ -161,4 +161,13 @@ body {
 .icon {
     font-size: 1.5rem;
     margin-bottom: 0.3rem;
+}
+
+.workout-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 } 
