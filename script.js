@@ -1,103 +1,110 @@
-const treino = {
-    "Dia 1 - Peito, Tríceps e Cardio HIIT": [
-        "Supino reto: 4 séries de 8-10 repetições",
-        "Supino inclinado com halteres: 4 séries de 8-10 repetições",
-        "Crucifixo: 3 séries de 10-12 repetições",
-        "Tríceps pulley: 3 séries de 10-12 repetições",
-        "Mergulho entre bancos: 3 séries até a falha",
-        "HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)"
-    ],
-    "Dia 2 - Costas, Bíceps e Core": [
-        "Puxada frontal: 4 séries de 8-10 repetições",
-        "Remada curvada: 4 séries de 8-10 repetições",
-        "Pullover: 3 séries de 10-12 repetições",
-        "Rosca direta: 3 séries de 10-12 repetições",
-        "Rosca alternada: 3 séries de 10-12 repetições",
-        "Core (Prancha 3x45s, Abdominal Infra 3x15)"
-    ],
-    "Dia 3 - Pernas, Ombros e Cardio": [
-        "Agachamento livre: 4 séries de 10-12 repetições",
-        "Leg press: 4 séries de 10-12 repetições",
-        "Cadeira extensora: 3 séries de 12-15 repetições",
-        "Desenvolvimento militar: 4 séries de 8-10 repetições",
-        "Elevação lateral: 3 séries de 10-12 repetições",
-        "Cardio LISS: 20 min caminhada inclinada"
-    ],
-    "Dia 4 - Descanso Ativo": [
-        "Caminhada de 30-40 min ou Yoga/Alongamento"
-    ],
-    "Dia 5 - Treino Funcional e Core": [
-        "Circuito de 6-8 exercícios (burpees, agachamento, saltos, corda, flexões, prancha)",
-        "Cada exercício por 40s com 20s descanso",
-        "3 a 4 rodadas com 2 min de descanso entre elas"
-    ],
-    "Dia 6 - Pernas e Cardio HIIT": [
-        "Agachamento sumô: 4 séries de 8-10 repetições",
-        "Avanço com halteres: 3 séries de 10 repetições por perna",
-        "Stiff com halteres: 3 séries de 10 repetições",
-        "Gêmeos em pé: 3 séries de 12-15 repetições",
-        "HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)"
-    ],
-    "Dia 7 - Descanso ou Atividade Leve": [
-        "Caminhada ou alongamento"
+const treinoPedro = {
+    "Treino A": [
+        "Circuito 1:",
+        "1. Supino reto: 3 séries de 8-10 repetições",
+        "2. Supino inclinado: 3 séries de 8-10 repetições",
+        "3. Crucifixo: 3 séries de 10-12 repetições",
+        "4. Tríceps pulley barrinha: 3 séries de 10-12 repetições",
+        "5. Tríceps corda: 3 séries até a falha",
+        "6. HIIT: 15 min (exemplo: 30s sprint / 30s caminhada)",
+        "Circuito 2:",
+        "1. Puxada frontal: 3 séries de 8-10 repetições",
+        "2. Remada curvada: 3 séries de 8-10 repetições",
+        "3. Pullover corda: 3 séries de 10-12 repetições",
+        "4. Rosca direta: 3 séries de 10-12 repetições",
+        "5. Rosca alternada: 3 séries de 10-12 repetições",
+        "6. Core (Prancha 3x45s, Abdominal Infra 3x15)",
+        "Circuito 3:",
+        "1. Agachamento livre: 3 séries de 10-12 repetições",
+        "2. Leg press: 3 séries de 10-12 repetições",
+        "3. Cadeira extensora: 3 séries de 12-15 repetições",
+        "4. Desenvolvimento militar: 3 séries de 8-10 repetições",
+        "5. Elevação lateral: 3 séries de 10-12 repetições",
+        "6. Cardio LISS: 20 min caminhada inclinada"
     ]
 };
 
-// Adicionar o treino da Aimê
 const treinoAime = {
-    "Treino A - Pernas, Glúteos e Superiores": [
+    "Treino A – Pernas, Glúteos e Membros Superiores": [
         "Circuito 1:",
         "1. Agachamento na polia com barra curta – 4 placas, 12 repetições",
         "2. Cadeira extensora – 3 placas, 12 repetições",
         "3. Levantamento lateral de ombros com halteres – 2kg, 12 repetições",
-        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "4. Cardio pós-circuito: Corrida ou bike, 3 minutos (120 rpm mínimo)",
         "Circuito 2:",
         "1. Subida unilateral no banco – 12 repetições por perna",
         "2. Elevação pélvico com elevação de perna unilateral – 15 repetições por lado",
         "3. Agachamento sumô com halteres 6kg– 12 repetições",
         "4. Tríceps com corda na polia – 12 repetições",
-        "5. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "5. Cardio pós-circuito: Corrida ou bike, 3 minutos (120 rpm mínimo)",
         "Circuito 3:",
-        "1. Abdutora com bola – 15 repetições, 3s isometria",
+        "1. Abdutora com bola – 15 repetições, 3 segundos de isometria",
         "2. Glúteo na cama (extensão de quadril) – 12 repetições por perna",
         "3. Supino livre com halteres – 4kg, 12 repetições",
-        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "4. Cardio pós-circuito: Corrida ou bike, 3 minutos (120 rpm mínimo)",
         "Circuito 4:",
-        "1. Abdominal elevação perna frente – 15 repetições, 3s isometria",
+        "1. Abdominal elevação perna frente – 15 repetições, 3 segundos de isometria",
         "2. Abdominal encolhimento perna - 15 rep"
     ],
-    "Treino B - Posteriores, Glúteos e Superiores": [
+    "Treino B – Posteriores, Glúteos e Membros Superiores": [
         "Circuito 1:",
         "1. Agachamento terra 4kg– 12 repetições",
         "2. Prancha Levantamento perna atras - 12 rep cada perna",
         "3. Puxada triângulo por cima – 5 placas, 12 repetições",
-        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "4. Cardio pós-circuito: Corrida ou bike, 3 minutos (120 rpm mínimo)",
         "Circuito 2:",
-        "1. Agachamento unilateral frontal – 12 repetições por perna",
+        "1. Agachamento unilateral frontal (avançado) – 12 repetições por perna",
         "2. Abdominal encolhimento de perna na cama – 15 repetições",
         "3. Remada triângulo – 4 placas, 12 repetições",
-        "4. Elevação pélvica unilateral com perna elevada – 12 rep por lado",
-        "5. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)",
+        "4. Elevação pélvica unilateral com perna elevada – 12 repetições por lado",
+        "5. Cardio pós-circuito: Corrida ou bike, 3 minutos (120 rpm mínimo)",
         "Circuito 3:",
         "1. Bíceps scott 3kg, 12 repetições",
-        "2. Tornozelo unilateral com peso – 15 repetições por lado",
+        "2. Tornozelo unilateral com peso (panturrilhas) – 15 repetições por lado",
         "3. Puxada aberta costas – 4Kg, 12 repetições",
-        "4. Cardio: Corrida ou bike, 3 minutos (120 rpm mínimo)"
+        "4. Cardio pós-circuito: Corrida ou bike, 3 minutos (120 rpm mínimo)"
     ]
 };
 
 let currentUser = 'pedro';
 
-// Reorganiza o treino para começar na segunda-feira
-const treinoOrdenado = {
-    "Domingo - Descanso ou Atividade Leve": treino["Dia 7 - Descanso ou Atividade Leve"],
-    "Segunda - Peito, Tríceps e Cardio HIIT": treino["Dia 1 - Peito, Tríceps e Cardio HIIT"],
-    "Terça - Costas, Bíceps e Core": treino["Dia 2 - Costas, Bíceps e Core"],
-    "Quarta - Pernas, Ombros e Cardio": treino["Dia 3 - Pernas, Ombros e Cardio"],
-    "Quinta - Descanso Ativo": treino["Dia 4 - Descanso Ativo"],
-    "Sexta - Treino Funcional e Core": treino["Dia 5 - Treino Funcional e Core"],
-    "Sábado - Pernas e Cardio HIIT": treino["Dia 6 - Pernas e Cardio HIIT"]
-};
+// Atualiza a função de setup dos botões de navegação
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        currentUser = item.dataset.user;
+        updateWorkout(new Date().getDay());
+    });
+});
+
+// Atualiza a função updateWorkout para usar o treino correto
+function updateWorkout(dayIndex) {
+    const workoutContainer = document.getElementById('workoutContainer');
+    workoutContainer.innerHTML = '';
+
+    const treino = currentUser === 'pedro' ? treinoPedro : treinoAime;
+    const treinoKey = Object.keys(treino)[dayIndex % Object.keys(treino).length];
+    const exercises = treino[treinoKey];
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'workout-title';
+    titleDiv.textContent = treinoKey;
+    workoutContainer.appendChild(titleDiv);
+
+    exercises.forEach(exercise => {
+        const exerciseDiv = document.createElement('div');
+        exerciseDiv.className = 'workout-item';
+        exerciseDiv.innerHTML = `
+            <span>${exercise}</span>
+            ${!exercise.startsWith('Circuito') ? '<input type="checkbox" />' : ''}
+        `;
+        workoutContainer.appendChild(exerciseDiv);
+    });
+
+    const totalSeries = exercises.filter(ex => !ex.startsWith('Circuito')).length;
+    document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     setupWeekDays();
@@ -190,55 +197,4 @@ function setupProgressChart() {
     };
 
     new Chart(ctx, config);
-}
-
-function updateWorkout(dayIndex) {
-    const workoutContainer = document.getElementById('workoutContainer');
-    workoutContainer.innerHTML = '';
-
-    let currentTreino;
-    let dayKey;
-    let exercises;
-
-    if (currentUser === 'pedro') {
-        dayKey = Object.keys(treinoOrdenado)[dayIndex];
-        exercises = treinoOrdenado[dayKey];
-    } else {
-        // Para Aimê, alterna entre Treino A e B dependendo do dia
-        dayKey = dayIndex % 2 === 0 ? 
-            "Treino A - Pernas, Glúteos e Superiores" : 
-            "Treino B - Posteriores, Glúteos e Superiores";
-        exercises = treinoAime[dayKey];
-    }
-
-    const titleDiv = document.createElement('div');
-    titleDiv.className = 'workout-title';
-    titleDiv.textContent = dayKey;
-    workoutContainer.appendChild(titleDiv);
-
-    exercises.forEach(exercise => {
-        const exerciseDiv = document.createElement('div');
-        exerciseDiv.className = 'workout-item';
-        if (exercise.startsWith('Circuito')) {
-            exerciseDiv.className += ' circuit-title';
-        }
-        exerciseDiv.innerHTML = `
-            <span>${exercise}</span>
-            <input type="checkbox" />
-        `;
-        workoutContainer.appendChild(exerciseDiv);
-    });
-
-    const totalSeries = exercises.length;
-    document.getElementById('seriesCount').textContent = `0/${totalSeries}`;
-}
-
-// Atualizar a função de setup dos botões de navegação
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-        item.classList.add('active');
-        currentUser = item.dataset.user;
-        updateWorkout(new Date().getDay());
-    });
-}); 
+} 
